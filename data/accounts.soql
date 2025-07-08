@@ -1,0 +1,1 @@
+Select Id, Name, BillingStreet, BillingCity, BillingState, BillingPostalCode, BillingCountry, ShippingStreet, ShippingCity, ShippingState, ShippingPostalCode, ShippingCountry, (SELECT Id, FirstName, LastName, Title, Department FROM Contacts) FROM Account WHERE Name != 'Sample Account for Entitlements'

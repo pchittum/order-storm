@@ -1,0 +1,77 @@
+{
+  "records": [
+    {
+      "attributes": {
+        "type": "Contact",
+        "referenceId": "ContactRef1"
+      },
+      "FirstName": "Mark",
+      "LastName": "Scout",
+      "Title": "Director of Procurement",
+      "AccountId": "@AccountRef1"
+    },
+    {
+      "attributes": {
+        "type": "Contact",
+        "referenceId": "ContactRef2"
+      },
+      "FirstName": "Gabby",
+      "LastName": "Arteta",
+      "Title": "Senior Buyer",
+      "AccountId": "@AccountRef1"
+    },
+    {
+      "attributes": {
+        "type": "Contact",
+        "referenceId": "ContactRef3"
+      },
+      "FirstName": "Seth",
+      "LastName": "Milchick",
+      "Title": "VP of Procurement",
+      "Department": "Sourcing",
+      "AccountId": "@AccountRef2"
+    },
+    {
+      "attributes": {
+        "type": "Contact",
+        "referenceId": "ContactRef4"
+      },
+      "FirstName": "Asal",
+      "LastName": "Reghabi",
+      "Title": "Buyer",
+      "AccountId": "@AccountRef2"
+    },
+    {
+      "attributes": {
+        "type": "Contact",
+        "referenceId": "ContactRef5"
+      },
+      "FirstName": "Dylan",
+      "LastName": "George",
+      "Title": "Senior Buyer",
+      "AccountId": "@AccountRef2"
+    },
+    {
+      "attributes": {
+        "type": "Contact",
+        "referenceId": "ContactRef6"
+      },
+      "FirstName": "Harmony",
+      "LastName": "Cobel",
+      "Title": "Director of Inventory",
+      "Department": "Merchandising",
+      "AccountId": "@AccountRef3"
+    },
+    {
+      "attributes": {
+        "type": "Contact",
+        "referenceId": "ContactRef7"
+      },
+      "FirstName": "Petey",
+      "LastName": "Kilmer",
+      "Title": "Purchasing Coordinator",
+      "Department": "Merchandising",
+      "AccountId": "@AccountRef3"
+    }
+  ]
+}

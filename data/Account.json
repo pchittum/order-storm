@@ -1,0 +1,53 @@
+{
+  "records": [
+    {
+      "attributes": {
+        "type": "Account",
+        "referenceId": "AccountRef1"
+      },
+      "Name": "Baubly Toyshops Ltd",
+      "BillingStreet": "240 Hickory Street",
+      "BillingCity": "Scranton",
+      "BillingState": "PA",
+      "BillingPostalCode": "18505",
+      "BillingCountry": "USA",
+      "ShippingStreet": "240 Hickory Street",
+      "ShippingCity": "Scranton",
+      "ShippingState": "PA",
+      "ShippingPostalCode": "240 Hickory Street",
+      "ShippingCountry": "USA"
+    },
+    {
+      "attributes": {
+        "type": "Account",
+        "referenceId": "AccountRef2"
+      },
+      "Name": "Jouet Jouet",
+      "BillingStreet": "1003 Hugh Wallis Road S",
+      "BillingCity": "Lafayette",
+      "BillingState": "LA",
+      "BillingPostalCode": "70508",
+      "ShippingStreet": "1003 Hugh Wallis Road S",
+      "ShippingCity": "Lafayette",
+      "ShippingState": "LA",
+      "ShippingPostalCode": "70508"
+    },
+    {
+      "attributes": {
+        "type": "Account",
+        "referenceId": "AccountRef3"
+      },
+      "Name": "Wendy's Toys",
+      "BillingStreet": "2116 Preston Street",
+      "BillingCity": "Rockford",
+      "BillingState": "IL",
+      "BillingPostalCode": "61102",
+      "BillingCountry": "USA",
+      "ShippingStreet": "2116 Preston Street",
+      "ShippingCity": "Rockford",
+      "ShippingState": "IL",
+      "ShippingPostalCode": "61102",
+      "ShippingCountry": "USA"
+    }
+  ]
+}
