@@ -8,7 +8,7 @@ public with sharing class InboundOrderPublisher {
     return result;
   }
 
-  public static List<Database.SaveResult> publishEvent(
+  public static List<Database.SaveResult> publishEvents(
     Integer evtCount,
     String msg
   ) {
