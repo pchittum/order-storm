@@ -1,0 +1,3 @@
+SELECT EventName, EventType, UsageType, Value, StartDate, EndDate 
+FROM PlatformEventUsageMetric 
+WHERE TimeSegment='Hourly'

@@ -1,0 +1,4 @@
+SELECT Fields(ALL) 
+FROM PlatformEventUsageMetric 
+WHERE EVENTNAME='Inbound_Order__e' AND TimeSegment = 'Hourly'
+LIMIT 100

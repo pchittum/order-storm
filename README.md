@@ -24,6 +24,9 @@ Some things:
   - unique partition key values will create a random/semi-random distribution among parallel subs (semirandom because UUIDs are not guaranteed to be unique)
   - Sequential events with the same partition key value will be processed in order within a given partition
 - Setup running user for subscriber to be able to run `log tail` as this user. Not a prod configuration necessarily.
+- Setup PE enhanced usage metrics here: https://developer.salesforce.com/docs/atlas.en-us.256.0.api_meta.meta/api_meta/meta_platformeventsettings.htm
+  - good to dig further into using these and working with this data
+-
 
 Some thoughts on what to cover.
 
