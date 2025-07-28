@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Receive orders inbound from external systems.</description>
+    <eventType>HighVolume</eventType>
+    <label>Inbound Order 1 Sub</label>
+    <pluralLabel>Inbound Orders 1 Sub</pluralLabel>
+    <publishBehavior>PublishImmediately</publishBehavior>
+</CustomObject>
