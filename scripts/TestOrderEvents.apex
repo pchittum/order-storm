@@ -1,6 +1,6 @@
 InboundOrderPublisher.publishEvent('Single Message');
 
-InboundOrderPublisher.publishEvents(100, 'Many Messages');
+InboundOrderPublisher.publishEvents(10000, 'Many Messages');
 
 
 
