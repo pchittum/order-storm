@@ -1,20 +1,25 @@
 public with sharing class InboundOrderPublisher {
-  public static Database.SaveResult publishEvent(String msg) {
+  public static void publishEvent(String msg) {
     // publish a single event in order to validate the event being wired up
     Inbound_Order__e orderEvent = new Inbound_Order__e(
-      Status__c = msg,
+      Status__c = 'Multi Subscriber',
       Type__c = 'Express'
     );
 
-    Database.SaveResult result = EventBus.publish(orderEvent);
+    Database.SaveResult resultMulti = EventBus.publish(orderEvent);
 
-    return result;
+    Inbound_Order_1sub__e orderEvent1Sub = new Inbound_Order_1sub__e(
+      Status__c = 'Single Subscriber',
+      Type__c = 'Express'
+    );
+
+    Database.SaveResult resultSingle = EventBus.publish(orderEvent1Sub);
+
+    return;
   }
 
-  public static List<Database.SaveResult> publishEvents(
-    Integer evtCount,
-    String msg
-  ) {
+  @future
+  public static void publishEvents(Integer evtCount, String msg) {
     // publish a set of events in order to validate the event being wired up
     List<Inbound_Order__e> orderEvents = new List<Inbound_Order__e>();
 
@@ -28,6 +33,24 @@ public with sharing class InboundOrderPublisher {
     }
 
     List<Database.SaveResult> results = EventBus.publish(orderEvents);
-    return results;
+    return;
+  }
+
+  @future
+  public static void publishEvents1Sub(Integer evtCount, String msg) {
+    // publish a set of events in order to validate the event being wired up
+    List<Inbound_Order_1sub__e> orderEvents = new List<Inbound_Order_1sub__e>();
+
+    for (Integer i = 0; i < evtCount; i++) {
+      Inbound_Order_1sub__e orderEvent = new Inbound_Order_1sub__e(
+        Status__c = msg,
+        Type__c = 'Saver'
+      );
+
+      orderEvents.add(orderEvent);
+    }
+
+    List<Database.SaveResult> results = EventBus.publish(orderEvents);
+    return;
   }
 }
