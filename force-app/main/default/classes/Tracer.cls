@@ -5,6 +5,6 @@ public with sharing class Tracer {
     String eventName,
     Integer eventCount
   ) {
-    System.debug();
+    System.debug('test');
   }
 }

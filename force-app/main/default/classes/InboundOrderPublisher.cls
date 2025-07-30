@@ -58,7 +58,7 @@ public with sharing class InboundOrderPublisher {
     return;
   }
 
-  public String getTraceId() {
+  private static String getTraceId() {
     return UUID.randomUUID().toString();
   }
 }
