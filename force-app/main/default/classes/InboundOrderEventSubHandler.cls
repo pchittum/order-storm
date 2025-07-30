@@ -33,4 +33,20 @@ public with sharing class InboundOrderEventSubHandler {
 
     insert ordersToInsert;
   }
+
+  public static void handleInboundOrders(List<SObject> orderEvents) {
+    List<Inbound_Order_Status__c> ordersToInsert = new List<Inbound_Order_Status__c>();
+
+    System.debug(orderEvents[0].get('Status__c'));
+
+    for (SObject orderEvent : orderEvents) {
+      Inbound_Order_Status__c orderStatus = new Inbound_Order_Status__c();
+      orderStatus.Status__c = (String) orderEvent.get('Status__c');
+      orderStatus.Event_Uuid__c = (String) orderEvent.get('EventUuid');
+      orderStatus.Order_Type__c = (String) orderEvent.get('Type__c');
+      ordersToInsert.add(orderStatus);
+    }
+
+    insert ordersToInsert;
+  }
 }

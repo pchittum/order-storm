@@ -2,7 +2,7 @@
 <PlatformEventSubscriberConfig xmlns="http://soap.sforce.com/2006/04/metadata">
     <masterLabel>InboundOrderConfig</masterLabel>
     <platformEventConsumer>InboundOrderSubscriber</platformEventConsumer>
-    <numPartitions>3</numPartitions>
+    <numPartitions>10</numPartitions>
     <partitionKey>EventUuid</partitionKey>
     <user>demo@order.storm</user>
 </PlatformEventSubscriberConfig>

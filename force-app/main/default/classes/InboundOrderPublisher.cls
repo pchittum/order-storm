@@ -1,16 +1,18 @@
 public with sharing class InboundOrderPublisher {
-  public static void publishEvent(String msg) {
+  public static void publishEvent() {
     // publish a single event in order to validate the event being wired up
     Inbound_Order__e orderEvent = new Inbound_Order__e(
       Status__c = 'Multi Subscriber',
-      Type__c = 'Express'
+      Type__c = 'Express',
+      Trace_Id__c = getTraceId()
     );
 
     Database.SaveResult resultMulti = EventBus.publish(orderEvent);
 
     Inbound_Order_1sub__e orderEvent1Sub = new Inbound_Order_1sub__e(
       Status__c = 'Single Subscriber',
-      Type__c = 'Express'
+      Type__c = 'Express',
+      Trace_Id__c = getTraceId()
     );
 
     Database.SaveResult resultSingle = EventBus.publish(orderEvent1Sub);
@@ -26,7 +28,8 @@ public with sharing class InboundOrderPublisher {
     for (Integer i = 0; i < evtCount; i++) {
       Inbound_Order__e orderEvent = new Inbound_Order__e(
         Status__c = msg,
-        Type__c = 'Saver'
+        Type__c = 'Saver',
+        Trace_Id__c = getTraceId()
       );
 
       orderEvents.add(orderEvent);
@@ -44,7 +47,8 @@ public with sharing class InboundOrderPublisher {
     for (Integer i = 0; i < evtCount; i++) {
       Inbound_Order_1sub__e orderEvent = new Inbound_Order_1sub__e(
         Status__c = msg,
-        Type__c = 'Saver'
+        Type__c = 'Saver',
+        Trace_Id__c = getTraceId()
       );
 
       orderEvents.add(orderEvent);
@@ -52,5 +56,9 @@ public with sharing class InboundOrderPublisher {
 
     List<Database.SaveResult> results = EventBus.publish(orderEvents);
     return;
+  }
+
+  public String getTraceId() {
+    return UUID.randomUUID().toString();
   }
 }
