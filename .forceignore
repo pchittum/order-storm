@@ -9,7 +9,8 @@ package.xml
 **/.eslintrc.json
 
 # LWC Jest
-**/__tests__/**force-app/main/default/profiles
+**/__tests__/**
+force-app/main/default/profiles
 
 # Profiles
 **/Admin.profile*

@@ -1,10 +1,10 @@
 public with sharing class InboundOrderPublisher {
-  public static void publishEvent() {
+  public static void publishEvent(String traceId) {
     // publish a single event in order to validate the event being wired up
     Inbound_Order__e orderEvent = new Inbound_Order__e(
       Status__c = 'Multi Subscriber',
       Type__c = 'Express',
-      Trace_Id__c = getTraceId()
+      Trace_Id__c = traceId
     );
 
     Database.SaveResult resultMulti = EventBus.publish(orderEvent);
@@ -12,7 +12,7 @@ public with sharing class InboundOrderPublisher {
     Inbound_Order_1sub__e orderEvent1Sub = new Inbound_Order_1sub__e(
       Status__c = 'Single Subscriber',
       Type__c = 'Express',
-      Trace_Id__c = getTraceId()
+      Trace_Id__c = traceId
     );
 
     Database.SaveResult resultSingle = EventBus.publish(orderEvent1Sub);
@@ -21,7 +21,11 @@ public with sharing class InboundOrderPublisher {
   }
 
   @future
-  public static void publishEvents(Integer evtCount, String msg) {
+  public static void publishEvents(
+    Integer evtCount,
+    String msg,
+    String traceId
+  ) {
     // publish a set of events in order to validate the event being wired up
     List<Inbound_Order__e> orderEvents = new List<Inbound_Order__e>();
 
@@ -29,7 +33,7 @@ public with sharing class InboundOrderPublisher {
       Inbound_Order__e orderEvent = new Inbound_Order__e(
         Status__c = msg,
         Type__c = 'Saver',
-        Trace_Id__c = getTraceId()
+        Trace_Id__c = traceId
       );
 
       orderEvents.add(orderEvent);
@@ -40,7 +44,11 @@ public with sharing class InboundOrderPublisher {
   }
 
   @future
-  public static void publishEvents1Sub(Integer evtCount, String msg) {
+  public static void publishEvents1Sub(
+    Integer evtCount,
+    String msg,
+    String traceId
+  ) {
     // publish a set of events in order to validate the event being wired up
     List<Inbound_Order_1sub__e> orderEvents = new List<Inbound_Order_1sub__e>();
 
@@ -48,7 +56,7 @@ public with sharing class InboundOrderPublisher {
       Inbound_Order_1sub__e orderEvent = new Inbound_Order_1sub__e(
         Status__c = msg,
         Type__c = 'Saver',
-        Trace_Id__c = getTraceId()
+        Trace_Id__c = traceId
       );
 
       orderEvents.add(orderEvent);
@@ -56,9 +64,5 @@ public with sharing class InboundOrderPublisher {
 
     List<Database.SaveResult> results = EventBus.publish(orderEvents);
     return;
-  }
-
-  private static String getTraceId() {
-    return UUID.randomUUID().toString();
   }
 }

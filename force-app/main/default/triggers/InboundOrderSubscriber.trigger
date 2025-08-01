@@ -4,6 +4,9 @@ trigger InboundOrderSubscriber on Inbound_Order__e(after insert) {
   // TODO: generate order and all related objects, which is big
   // TODO: setup for parallel subscriptions
 
+  System.debug('Start Platform Event Trigger');
+
   InboundOrderEventSubHandler.handleInboundOrders((List<SObject>) Trigger.new);
 
+  System.debug('End Platform Event Trigger');
 }

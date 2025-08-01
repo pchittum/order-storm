@@ -26,7 +26,11 @@ Some things:
 - Setup running user for subscriber to be able to run `log tail` as this user. Not a prod configuration necessarily.
 - Setup PE enhanced usage metrics here: https://developer.salesforce.com/docs/atlas.en-us.256.0.api_meta.meta/api_meta/meta_platformeventsettings.htm
   - good to dig further into using these and working with this data
--
+- Like many configurations that have broad impact, repartitioning is async and takes time. You can't just flip back and forth (give it a few seconds)
+- Keep in mind, the tests aren't representative of performance you'd expect
+  - How I'm tracing is specific to this implementation. I've tried to minimize performance impact, profiling always incurs some additional performance hit
+  - Scratch org versus production/full sandbox. I imagine how Salesforce prioritises/allocates resources for some orgs is different from others...
+  - **But** all tests are under the same conditions, so comparatively, I think we can still learn something generally with how these things perform.
 
 Some thoughts on what to cover.
 

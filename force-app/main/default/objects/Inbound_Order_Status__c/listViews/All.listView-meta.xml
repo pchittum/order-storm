@@ -5,6 +5,9 @@
     <columns>Event_Uuid__c</columns>
     <columns>Order_Type__c</columns>
     <columns>Status__c</columns>
+    <columns>Platform_Event_Name__c</columns>
+    <columns>Trace_Id__c</columns>
+    <columns>Batch_Id__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>
