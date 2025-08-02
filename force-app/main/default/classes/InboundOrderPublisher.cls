@@ -26,7 +26,6 @@ public with sharing class InboundOrderPublisher {
     String msg,
     String traceId
   ) {
-    // publish a set of events in order to validate the event being wired up
     List<Inbound_Order__e> orderEvents = new List<Inbound_Order__e>();
 
     for (Integer i = 0; i < evtCount; i++) {
@@ -49,7 +48,6 @@ public with sharing class InboundOrderPublisher {
     String msg,
     String traceId
   ) {
-    // publish a set of events in order to validate the event being wired up
     List<Inbound_Order_1sub__e> orderEvents = new List<Inbound_Order_1sub__e>();
 
     for (Integer i = 0; i < evtCount; i++) {
