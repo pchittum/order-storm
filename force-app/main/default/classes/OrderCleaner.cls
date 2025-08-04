@@ -8,6 +8,9 @@ public with sharing class OrderCleaner implements Queueable {
   private Datetime timestamp;
 
   public OrderCleaner() {
+    // create the cursor to use to delete Inbound_Order_Status__c records
+    // this.position ensures cursor is created only once across all
+    // chained queueable calls when we re-enqueue this.
     this.cursorHandle = Database.getCursor(
       'SELECT Id FROM Inbound_Order_Status__c LIMIT 100000'
     );
@@ -17,7 +20,7 @@ public with sharing class OrderCleaner implements Queueable {
   public void execute(QueueableContext ctx) {
     List<Inbound_Order_Status__c> orders = new List<Inbound_Order_Status__c>();
 
-    // fetch up to DML Rows limit
+    // iterate fetch up to DML Rows limit
     while (orders.size() < Limits.getLimitDMLRows()) {
       orders.addAll(
         (List<Inbound_Order_Status__c>) cursorHandle.fetch(position, batchSize)
@@ -28,6 +31,8 @@ public with sharing class OrderCleaner implements Queueable {
 
     delete orders;
 
+    // once we've fetched the equivalent number of records as are in the
+    // cursor, stop enqueueing new calls.
     if (position < cursorHandle.getNumRecords()) {
       System.enqueueJob(this);
     }
