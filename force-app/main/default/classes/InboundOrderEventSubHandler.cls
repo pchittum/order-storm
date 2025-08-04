@@ -1,45 +1,13 @@
 public with sharing class InboundOrderEventSubHandler {
-  // public static void handleInboundOrders(List<Inbound_Order__e> orderEvents) {
-  //   List<Inbound_Order_Status__c> ordersToInsert = new List<Inbound_Order_Status__c>();
-
-  //   System.debug(orderEvents[0].Status__c);
-
-  //   for (Inbound_Order__e orderEvent : orderEvents) {
-  //     Inbound_Order_Status__c orderStatus = new Inbound_Order_Status__c();
-  //     orderStatus.Status__c = orderEvent.Status__c;
-  //     orderStatus.Event_Uuid__c = orderEvent.EventUuid;
-  //     orderStatus.Order_Type__c = orderEvent.Type__c;
-  //     ordersToInsert.add(orderStatus);
-  //   }
-
-  //   insert ordersToInsert;
-  // }
-
-  // // todo: make the above method use generic sobject types and get rid of this one
-  // public static void handleInboundOrdersSingle(
-  //   List<Inbound_Order_1sub__e> orderEvents
-  // ) {
-  //   List<Inbound_Order_Status__c> ordersToInsert = new List<Inbound_Order_Status__c>();
-
-  //   System.debug(orderEvents[0].Status__c);
-
-  //   for (Inbound_Order_1sub__e orderEvent : orderEvents) {
-  //     Inbound_Order_Status__c orderStatus = new Inbound_Order_Status__c();
-  //     orderStatus.Status__c = orderEvent.Status__c;
-  //     orderStatus.Event_Uuid__c = orderEvent.EventUuid;
-  //     orderStatus.Order_Type__c = orderEvent.Type__c;
-  //     orderStatus.Trace_Id__c = orderEvent.Trace_Id__c;
-  //     ordersToInsert.add(orderStatus);
-  //   }
-
-  //   insert ordersToInsert;
-  // }
+  // single generic SObject method to process both sets of events.
 
   public static void handleInboundOrders(List<SObject> orderEvents) {
+    // used to capture metrics about the processing of platform events
     String batchId = UUID.randomUUID().toString();
     String eventName = orderEvents.getSObjectType().getDescribe().name;
     Datetime timestamp = System.now();
 
+    // store start trace record
     Tracer.trace(
       (String) orderEvents[0].get('Trace_Id__c'),
       batchId,
@@ -49,9 +17,9 @@ public with sharing class InboundOrderEventSubHandler {
       timestamp
     );
 
+    // straightforward processing of sobject (in this case platform events)
+    // remember that PE trigger batch sizes are up to 2000
     List<Inbound_Order_Status__c> ordersToInsert = new List<Inbound_Order_Status__c>();
-
-    System.debug(orderEvents[0].get('Status__c'));
 
     for (SObject orderEvent : orderEvents) {
       Inbound_Order_Status__c orderStatus = new Inbound_Order_Status__c();
@@ -67,8 +35,10 @@ public with sharing class InboundOrderEventSubHandler {
 
     insert ordersToInsert;
 
+    // fetch new timestamp for end trace
     timestamp = System.now();
 
+    // store end trace record
     Tracer.trace(
       (String) orderEvents[0].get('Trace_Id__c'),
       batchId,
