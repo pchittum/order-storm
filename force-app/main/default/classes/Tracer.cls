@@ -21,10 +21,9 @@ public with sharing class Tracer {
       timestamp
     );
 
+    // Create queueable instance and enqueue
     TraceHandler thisTrace = new TraceHandler(trace);
 
     System.enqueueJob(thisTrace);
-
-    // TODO: fill out logic to call queueable and store trace records
   }
 }
