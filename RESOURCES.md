@@ -6,7 +6,7 @@ https://github.com/pchittum/order-storm
 ## The Jupyter Notebook
 https://bit.ly/platform-event-partitions-tests
 
-## The (Presentation)(https://docs.google.com/presentation/d/12tBsYwlnvtAYqDcQ3-p5IjyBcBS4__mWhiPQhn6mnxs/edit?usp=sharing)
+## The [Presentation](https://docs.google.com/presentation/d/12tBsYwlnvtAYqDcQ3-p5IjyBcBS4__mWhiPQhn6mnxs/edit?usp=sharing)
 https://docs.google.com/presentation/d/12tBsYwlnvtAYqDcQ3-p5IjyBcBS4__mWhiPQhn6mnxs/edit?usp=sharing
 
 AND Read these Docs
